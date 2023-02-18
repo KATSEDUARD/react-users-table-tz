@@ -1,0 +1,59 @@
+.header-layout {
+    .static-layout {
+        display: grid;
+        grid-template-columns: minmax(0, calc(100% - 16px));
+        grid-template-rows: auto;
+
+        &-heading {
+            font-size: 32px;
+        }
+
+        &-description {
+            font-size: 14px;
+            color: gray;
+        }
+    }
+
+    .control-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 30%) minmax(0, calc(70% - 16px));
+        grid-template-rows: auto;
+
+        .users-info {
+            &-title {
+                font-size: 24px;
+            }
+
+            &-amount {
+                padding-left: 4px;
+                padding-top: 4px;
+                font-size: 14px;
+                color: gray;
+            }
+        }
+
+        .search-input {
+            .input-group {
+                .form-control {
+                    border: none;
+                    background-color: #e9ecef;
+                    border-radius: 60px;
+                    padding-left: 0;
+                    box-shadow: none;
+                    outline: none;
+                    color: gray
+                }
+
+                &-text {
+                    border: none;
+                    padding-left: 12px;
+                    border-radius: 60px;
+
+                    i {
+                        color: gray;
+                    }
+                }
+            }
+        }
+    }
+}

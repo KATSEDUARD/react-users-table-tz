@@ -1,0 +1,61 @@
+.table-layout {
+    .highlight {
+        background-color: yellow;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .table-custom {
+        &-header {
+            background-color: #e9ecef;
+            border-radius: 4px;
+            color: gray;
+            font-weight: 500;
+            width: calc(100% - 16px);
+        }
+        
+        .table-custom-body {
+            width: calc(100% - 16px);
+        }
+
+        &-row {
+            display: grid;
+            white-space: nowrap;
+            grid-template-columns: minmax(0, 50%) repeat(4, minmax(0, 10%)) minmax(0, 5%);
+            column-gap: 16px;
+            align-items: center;
+            background-color: inherit;
+            padding: 8px 12px;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            margin-bottom: 4px;
+
+            .header-cell {
+                text-align: center;
+
+                &:first-of-type {
+                    text-align: start;
+                }
+            }
+
+            &-cell {
+                white-space: nowrap;
+                text-align: center;
+
+                .form-check-input {
+                    box-shadow: none;
+                    outline: none;
+                }
+
+                &:last-of-type {
+                    color: gray;
+                    text-align: end;
+                }
+
+                &:first-of-type {
+                    text-align: start;
+                }
+            }
+        }
+    }
+}
