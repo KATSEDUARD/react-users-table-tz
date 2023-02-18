@@ -19,10 +19,11 @@ const staticLayout = () => {
     );
 };
 
+const { searchUsers } = usersActions;
+
 export const HeaderLayout = () => {
     const dispatch = useDispatch();
     const usersAmount = useSelector(state => state.usersAmount);
-    const { searchUsers } = usersActions;
 
     const searchHandle = e => {
         dispatch(searchUsers(e.target.value));

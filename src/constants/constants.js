@@ -6,5 +6,8 @@ export const constants = {
         PLACEHOLDER: 'Search'
     },
     TABLE_HEADERS: ['User Name', 'View', 'Execute', 'Modify', 'Delete', ''],
-    SAVE: 'Save'
+    SAVE: 'Save',
+    SAVED: 'Saved',
+    CHECK_ALL: 'Check All',
+    REMOVE_ALL: 'Remove All'
 };
