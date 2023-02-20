@@ -4,7 +4,6 @@ const MAIN_MODEL = {
     usersAmount: 0,
     searchRequest: '',
     sortBy: 'asc',
-    rulesToSave: []
 };
 
 export const mainModel = {

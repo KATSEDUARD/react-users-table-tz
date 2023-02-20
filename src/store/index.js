@@ -60,7 +60,6 @@ const usersSlice = createSlice({
             state.filteredUsers = utils.checkSingleAction(state.filteredUsers, id, type);
         },
         save(state) {
-            state.rulesToSave = [];
             localStorage.setItem('users', JSON.stringify(state.users));
             toast.success(`${SAVED}!`);
         },
@@ -69,12 +68,10 @@ const usersSlice = createSlice({
 
             switch(type) {
                 case 'check':
-                    state.rulesToSave = state.rulesToSave.filter(rule => rule.id === id);
                     state.users = utils.checkRemoveAll(state.users, true, id);
                     state.filteredUsers = utils.checkRemoveAll(state.filteredUsers, true, id);
                     break;
                 case 'remove':
-                    state.rulesToSave = state.rulesToSave.filter(rule => rule.id === id);
                     state.users = utils.checkRemoveAll(state.users, false, id);
                     state.filteredUsers = utils.checkRemoveAll(state.filteredUsers, false, id);
                     break;

@@ -5,7 +5,6 @@ import './styles.scss';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import Highlighter from "react-highlight-words";
 import { usersActions } from '../../store';
-import { isEmpty } from 'lodash';
 import { Dropdown } from 'react-bootstrap';
 import React from 'react';
 
@@ -35,7 +34,7 @@ const renderTableHeader = (sortHandle, sortBy) => {
     </div>;
 };
 
-const renderTableBody = (users, searchRequest, onChangeHandle, rulesToSave, checkHandle) => {
+const renderTableBody = (users, searchRequest, onChangeHandle, checkHandle) => {
     return <div className="table-custom-body">
         {users.map(user => <div key={user.id} className="table-custom-row">
             <div className="table-custom-row-cell"><i className="fas fa-user pe-1"></i>
@@ -46,7 +45,7 @@ const renderTableBody = (users, searchRequest, onChangeHandle, rulesToSave, chec
                 textToHighlight={user.name}
             /></div>
             {user.permissions.map((permission, index) => 
-                <div key={index} className="table-custom-row-cell"><Form.Check checked={isEmpty(rulesToSave) ? permission.status : undefined} onChange={() => onChangeHandle({ id: user.id, type: permission.permission })} aria-label={permission.permission} /></div>)}
+                <div key={index} className="table-custom-row-cell"><Form.Check checked={permission.status} onChange={() => onChangeHandle({ id: user.id, type: permission.permission })} aria-label={permission.permission} /></div>)}
             <div className="table-custom-row-cell">
                 <Dropdown>
                     <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
@@ -65,7 +64,7 @@ const { sortUsers, checkActions, checkListener } = usersActions;
 
 export const TableLayout = () => {
     const dispatch = useDispatch();
-    const { filteredUsers, searchRequest, sortBy, rulesToSave } = useSelector(state => state);
+    const { filteredUsers, searchRequest, sortBy } = useSelector(state => state);
 
     const sortHandle = () => {
         dispatch(sortUsers());
@@ -103,7 +102,7 @@ export const TableLayout = () => {
                   right: 0,
                 }}/>}
                 >
-                {renderTableBody(filteredUsers, searchRequest, onChangeHandle, rulesToSave, checkHandle)}
+                {renderTableBody(filteredUsers, searchRequest, onChangeHandle, checkHandle)}
             </Scrollbars>
         </div>
   </div>;
